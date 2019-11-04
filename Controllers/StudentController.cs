@@ -35,6 +35,18 @@ namespace MvcTestApp.Controllers
 
             return "Saved failed" ;
         }
+
+        public ActionResult Index()
+
+        {
+            Student student=new Student();
+            student.StudenName = "shahadat";
+            student.RegNo = 1414515;
+            student.Email = "sgahaha@";
+            student.DepartmentName = "maka";
+            ViewBag.student =student;
+            return View();
+        }
       
     }
 }
