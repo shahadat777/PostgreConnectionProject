@@ -1,0 +1,63 @@
+﻿@model MvcTestApp.Models.Student
+@{
+    ViewData["Title"] = "SaveStudent";
+    List<Student> students = (List<Student>)ViewBag.Students;
+}
+
+<h2>SaveStudent</h2>
+<h2>@ViewBag.massage</h2>
+@using (Html.BeginForm(FormMethod.Post))
+{
+    <div>
+        <table>
+            <tr>
+                <td>@Html.LabelFor(c => c.StudenName)</td>
+                <td>@Html.TextBoxFor(c => c.StudenName, new { @class = "form-control" })</td>
+                <td>@Html.ValidationMessageFor(c => c.StudenName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c=>c.RegNo)</td>
+                <td>@Html.TextBoxFor(c=>c.RegNo, new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c => c.Email)</td>
+                <td>@Html.TextBoxFor(c => c.Email, new { @class = "form-control" })</td>
+                <td>@Html.ValidationMessageFor(c => c.Email)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(c=>c.Name)</td>
+                <td>@Html.DropDownListFor(c=>c.Name,new SelectList(ViewBag.departments, "ID","Name"),"--select--" ,new { @class = "form-control" })</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Save"/></td>
+            </tr>
+
+        </table>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <td>Student Name</td>
+                    <td>Student Email</td>
+                    <td>Student RegNo</td>
+                    <td>Student Departments</td>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var c in students)
+            {
+                <tr>
+                    <td>@c.StudenName</td>
+                    <td>@c.Email</td>
+                    <td>@c.RegNo</td>
+                    <td>@c.Name</td>
+                </tr>
+            }
+            </tbody>
+          
+
+
+        </table>
+    </div>
+   
+}

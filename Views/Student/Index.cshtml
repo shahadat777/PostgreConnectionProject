@@ -1,7 +1,21 @@
 ﻿
+@model List<MvcTestApp.Models.Student>
 @{
     ViewData["Title"] = "Index";
+    List<Student> students = (List<Student>) ViewBag.student;
 }
 
-<h2>StudentName:@ViewBag.student.StudenName</h2>
+<h2></h2>
+<table class="table table-bordered">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.StudenName</td>
+            <td>@item.RegNo</td>
+            <td>@item.Email</td>
+            <td>@item.Name</td>
+            
 
+        </tr>
+    }
+</table>
